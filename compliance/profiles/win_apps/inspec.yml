@@ -1,0 +1,10 @@
+name: win_apps
+title: InSpec Profile
+maintainer: Mike Butler
+copyright: Progress
+copyright_email: michael.butler@optum.com 
+license: Apache-2.0
+summary: Chocolatey Application compliance
+version: 0.1.2
+supports:
+  platform: os
