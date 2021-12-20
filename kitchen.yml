@@ -6,15 +6,15 @@ provisioner:
   name: chef_zero
   always_update_cookbooks: true
   product_name: chef
-  product_version: 17.8.7
-  channel: unstable
+  product_version: 17
+  channel: stable
   log_level: auto
 
 verifier:
   name: inspec
 
 platforms:
-- name: butler_win16
+- name: windows_2019
   os_type: windows
   transport:
     name: winrm
@@ -22,10 +22,8 @@ platforms:
     elevated_username: vagrant
     elevated_password: vagrant
   driver:
-    box_name: butler_win16
-    box_url: https://app.vagrantup.com/tas50/boxes/windows_2016/versions/202010.24.0/providers/virtualbox.box
-    network:
-      - ["forwarded_port", {guest: 4040, host: 4040, auto_correct: true}]
+    box_name: windows_2019
+    box_url: https://app.vagrantup.com/tas50/boxes/windows_2019/versions/202010.24.0/providers/virtualbox.box
     customize:
       cpus: 2
       memory: 4096
@@ -38,3 +36,5 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+      audit:
+        reporter: 'cli'
