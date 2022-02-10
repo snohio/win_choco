@@ -5,6 +5,7 @@
 \#*#
 .*.sw[a-z]
 *.un~
+.vscode
 
 # Bundler
 Gemfile.lock
@@ -13,7 +14,7 @@ bin/*
 .bundle/*
 
 # test kitchen
-.kitchen/
+.kitchen
 kitchen.local.yml
 
 # Chef Infra
@@ -22,4 +23,3 @@ Berksfile.lock
 Policyfile.lock.json
 
 .idea/
-

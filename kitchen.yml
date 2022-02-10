@@ -14,7 +14,8 @@ verifier:
   name: inspec
 
 platforms:
-- name: windows_2019
+
+- name: tas50/windows_10
   os_type: windows
   transport:
     name: winrm
@@ -22,8 +23,6 @@ platforms:
     elevated_username: vagrant
     elevated_password: vagrant
   driver:
-    box_name: windows_2019
-    box_url: https://app.vagrantup.com/tas50/boxes/windows_2019/versions/202010.24.0/providers/virtualbox.box
     customize:
       cpus: 2
       memory: 4096
@@ -34,7 +33,13 @@ suites:
     - recipe[win_choco::default]
     verifier:
       inspec_tests:
-        - test/integration/default
+        - compliance/profiles/win_apps
     attributes:
       audit:
         reporter: 'cli'
+        compliance_phase: true
+      software:
+        adobereader: true
+        vscode: true
+      tags:
+        - choco_nodejs

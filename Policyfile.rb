@@ -14,3 +14,8 @@ run_list 'win_choco::default'
 
 # Specify a custom source for a single cookbook:
 cookbook 'win_choco', path: '.'
+
+# attributes
+default['audit']['compliance_phase'] = true
+default['audit']['fetcher'] = 'chef-automate'
+default['audit']['reporter'] = 'chef-server-automate','cli'

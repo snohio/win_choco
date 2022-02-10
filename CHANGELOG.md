@@ -2,6 +2,16 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.1.5
+
+- Added NodeJS
+- Added Adobe Acrobat Reader
+- Added VSCode if Node Attribute
+
+## 0.1.3
+
+- Installs and Validates *Microsoft Edge*
+
 ## 0.1.2
 
 - Updated Kitchen.yml to use latest Chef Client that allows for Compliance Phase when running -z
