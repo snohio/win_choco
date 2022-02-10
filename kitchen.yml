@@ -7,13 +7,14 @@ provisioner:
   always_update_cookbooks: true
   product_name: chef
   product_version: 17
-  channel: unstable
+  channel: stable
   log_level: auto
 
 verifier:
   name: inspec
 
 platforms:
+
 - name: tas50/windows_10
   os_type: windows
   transport:
@@ -42,4 +43,3 @@ suites:
         vscode: true
       tags:
         - choco_nodejs
-
