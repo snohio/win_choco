@@ -23,3 +23,39 @@ include_recipe 'chocolatey::default'
 chocolatey_package 'git' do
   action :install
 end
+
+chocolatey_package '7zip.install' do
+  action :install
+end
+
+chocolatey_package 'microsoft-edge' do
+  action :install
+end
+
+chocolatey_package 'vscode' if node.exist?('software', 'vscode') do
+  action :install
+end
+
+# Install Adobe Acrobat Reader if the Attribute [software][adobereader] exists. This can exist in a policyfile, role, or node level.
+if node.exist?('software', 'adobereader')
+  chocolatey_package 'adobereader' do
+    action :install
+  end
+# Remove it if it doesn't exist.
+elsif node.exist?('packages', 'Adobe Acrobat Reader DC MUI')
+  chocolatey_package 'adobereader' do
+    action :remove
+  end
+end
+
+# Install for NodeJS based on a TAG
+
+if tagged?('choco_nodejs')
+  chocolatey_package 'nodejs' do
+    action :install
+  end
+elsif node.exist?('packages', 'Node.js')
+  chocolatey_package 'nodejs' do
+    action :remove
+  end
+end
