@@ -48,7 +48,8 @@ elsif node.exist?('packages', 'Adobe Acrobat Reader DC MUI')
   end
 end
 
-# Install for NodeJS based on a TAG
+# Install for NodeJS based on a TAG. Some Chocolatey installs
+# have a .install piece too, so you need to remove both as below.
 
 if tagged?('choco_nodejs')
   chocolatey_package 'nodejs' do
@@ -56,6 +57,9 @@ if tagged?('choco_nodejs')
   end
 elsif node.exist?('packages', 'Node.js')
   chocolatey_package 'nodejs' do
+    action :remove
+  end
+  chocolatey_package 'nodejs.install' do
     action :remove
   end
 end

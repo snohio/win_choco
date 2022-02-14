@@ -10,6 +10,8 @@ We are using the Policyfile model and integrated the `kitchen verify` Inspec tes
 
 Notice the Attributes section in the `kitchen.yml` file as well. There are examples of how to include attributes (as if they were node attributes on the Chef Server) as well as tags. This is how you would replicate those Chef Server Node Attributes.
 
+> If you add and then remove attributes in the kitchen.yml file, you will need to remove the .json file on the guest (test vm) located in `c:\Users\vagrant\AppData\Local\kitchen\node\` and then next run all of the attributes will be regathered. This is moderately an anti-pattern to Kitchen testing, but if you want to test what happens when an application is added or removed - triggered by an attribute / tag, that is the only way.
+
 ## Requirements
 
 ### Platforms

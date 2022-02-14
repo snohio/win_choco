@@ -39,7 +39,7 @@ suites:
         reporter: 'cli'
         compliance_phase: true
       software:
-        adobereader: true
+#       adobereader: true
         vscode: true
-      tags:
-        - choco_nodejs
+#      tags:
+#        - choco_nodejs
