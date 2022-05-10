@@ -1,0 +1,45 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  always_update_cookbooks: true
+  product_name: chef
+  product_version: 17
+  channel: stable
+  log_level: auto
+
+verifier:
+  name: inspec
+
+platforms:
+
+- name: tas50/windows_10
+  os_type: windows
+  transport:
+    name: winrm
+    elevated: true
+    elevated_username: vagrant
+    elevated_password: vagrant
+  driver:
+    customize:
+      cpus: 2
+      memory: 4096
+
+suites:
+  - name: default
+    run_list:
+    - recipe[win_choco::default]
+    verifier:
+      inspec_tests:
+        - compliance/profiles/win_apps
+    attributes:
+      audit:
+        reporter: 'cli'
+        compliance_phase: true
+      software:
+#       adobereader: true
+        vscode: true
+#      tags:
+#        - choco_nodejs
