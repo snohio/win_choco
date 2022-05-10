@@ -1,10 +1,10 @@
 name: win_apps
-title: InSpec Profile
+title: Windows Choco Application Profile
 maintainer: Mike Butler
 copyright: Progress
 copyright_email: michael.butler@optum.com 
 license: Apache-2.0
-summary: Chocolatey Application compliance
-version: 0.1.5
+summary: Chocolatey Application Compliance Profile
+version: 0.1.6
 supports:
-  platform: os
+  platform: Windows
