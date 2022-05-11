@@ -13,9 +13,6 @@ provisioner:
   product_version: 17
   channel: stable
 
-### Uncomment this setting to have Test Kitchen fail on any deprecation warning; useful in advance of a new chef-client release
-  # deprecations_as_errors: true
-
 verifier:
   name: inspec
 
@@ -27,8 +24,6 @@ platforms:
     name: winrm
   driver:
     image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest
-    network:
-      - ["forwarded_port", {guest: 4040, host: 4040, auto_correct: true}]
 #    username: "azure"
 #    password: "P2ssw0rd"
 
@@ -46,5 +41,5 @@ suites:
       software:
 #       adobereader: true
         vscode: true
-#      tags:
-#        - choco_nodejs
+      tags:
+        - choco_openjdk

@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.2.1
+
+- Added OpenJDK
+
 ## 0.1.6
 
 - Updated the Profile Description

@@ -63,3 +63,13 @@ elsif node.exist?('packages', 'Node.js')
     action :remove
   end
 end
+
+if tagged?('choco_openjdk')
+  chocolatey_package 'openjdk' do
+    action :install
+  end
+elsif node.exist?('packages', 'Node.js')
+  chocolatey_package 'openjdk' do
+    action :remove
+  end
+end

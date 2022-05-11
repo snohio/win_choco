@@ -54,3 +54,13 @@ control 'win-nodejs' do
   end
   only_if { package('Node.js').installed? }
 end
+
+control 'win-openjdk' do
+  impact 0.3
+  title 'OpenJDK Installed'
+  describe chocolatey_package('openjdk') do
+    it { should be_installed }
+    its('version') { should cmp > '18.0.0' }
+  end
+  only_if { package('OpenJava Development Kit').installed? }
+end
