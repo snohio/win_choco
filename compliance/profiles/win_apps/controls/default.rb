@@ -62,5 +62,5 @@ control 'win-openjdk' do
     it { should be_installed }
     its('version') { should cmp > '18.0.0' }
   end
-  only_if { package('OpenJava Development Kit').installed? }
+  only_if { ::Dir.exist?('C:\Program Files\OpenJDK') }
 end
