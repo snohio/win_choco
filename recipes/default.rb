@@ -68,7 +68,7 @@ if tagged?('choco_openjdk')
   chocolatey_package 'openjdk' do
     action :install
   end
-elsif node.exist?('packages', 'Node.js')
+elsif node.exist?('packages', 'openjdk')
   chocolatey_package 'openjdk' do
     action :remove
   end
