@@ -1,45 +1,54 @@
 ---
 driver:
-  name: azurerm
-  subscription_id: 'b02e675a-cee0-49bd-a056-daa7ed05bf4e'
-  location: 'East US'
-  machine_size: 'Standard_D2s_v3'
-  azure_resource_group_prefix: 'butler-tk'
-  
+  name: vagrant
+  box_auto_update: true
+  box_auto_prune: true
+
 provisioner:
   name: chef_zero
   always_update_cookbooks: true
   product_name: chef
-  product_version: 17
+  product_version: 17.8
   channel: stable
+
+### Uncomment this setting to have Test Kitchen fail on any deprecation warning; useful in advance of a new chef-client release
+  # deprecations_as_errors: true
 
 verifier:
   name: inspec
 
 platforms:
 
-- name: Windows2019
+- name: almalinux-8.5
+  driver:
+    linked_clone: true
+  customize:
+    cpus: 2
+    memory: 2048
+
+- name: stromweld/windows-2022
   os_type: windows
   transport:
     name: winrm
+    elevated: true
+    elevated_username: vagrant
+    elevated_password: vagrant
   driver:
-    image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest
-#    username: "azure"
-#    password: "P2ssw0rd"
+    box_name: windows-2022
+    customize:
+      cpus: 2
+      memory: 2048
+
 
 suites:
   - name: default
     run_list:
-    - recipe[win_choco::default]
+      - recipe[chef-client::default]
     verifier:
       inspec_tests:
-        - compliance/profiles/win_apps
+        - compliance/profiles/client-run/controls
     attributes:
       audit:
         reporter: 'cli'
-        compliance_phase: true
-      software:
-#       adobereader: true
-        vscode: true
-      tags:
-        - choco_openjdk
+#      chef:
+#        filepath: = 'c:\Users\vagrant\AppData\Local\Temp\kitchen\client.pem'
