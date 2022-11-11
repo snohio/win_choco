@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.3.0
+
+- Validate working with Client 18
+- No changes were needed
+
 ## 0.2.1
 
 - Added OpenJDK
