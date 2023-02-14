@@ -19,11 +19,6 @@
 include_profile 'win_choco::win_apps'
 
 include_recipe 'chocolatey::default'
-
-chocolatey_package 'git' do
-  action :install
-end
-
 chocolatey_package '7zip.install' do
   action :install
 end
@@ -32,8 +27,19 @@ chocolatey_package 'microsoft-edge' do
   action :install
 end
 
-chocolatey_package 'vscode' if node.exist?('software', 'vscode') do
-  action :install
+# This is the Chef Developer Package
+# If this is a Chef Developer's workstation, please include the tag chef_developer
+
+if tagged?('chef_developer')
+  chocolatey_package 'chef-workstation' do
+    action :install
+  end
+  chocolatey_package 'vscode' do
+    action :install
+  end
+  chocolatey_package 'git' do
+    action :install
+  end
 end
 
 # Install Adobe Acrobat Reader if the Attribute [software][adobereader] exists. This can exist in a policyfile, role, or node level.

@@ -6,22 +6,17 @@ control 'win-app' do
 
   describe chocolatey_package('chocolatey') do
     it { should be_installed }
-    its('version') { should cmp > '0.11' }
-  end
-
-  describe chocolatey_package('git') do
-    it { should be_installed }
-    its('version') { should cmp > '2.33.0' }
+    its('version') { should cmp >= '1.2.1' }
   end
 
   describe chocolatey_package('7zip.install') do
     it { should be_installed }
-    its('version') { should cmp > '21.0' }
+    its('version') { should cmp >= '22.1' }
   end
 
   describe chocolatey_package('microsoft-edge') do
     it { should be_installed }
-    its('version') { should cmp > '96.0' }
+    its('version') { should cmp >= '110.0.1587.41' }
   end
 end
 
@@ -30,7 +25,7 @@ control 'win-vscode' do
   title 'VS Code Installed'
   describe chocolatey_package('vscode') do
     it { should be_installed }
-    its('version') { should cmp > '1.64.0' }
+    its('version') { should cmp >= '1.75.0' }
   end
   only_if { package('Microsoft Visual Studio Code').installed? }
 end
@@ -40,7 +35,7 @@ control 'win-adobe_reader' do
   title 'Adobe Reader Installed'
   describe chocolatey_package('adobereader') do
     it { should be_installed }
-    its('version') { should cmp > '2021.011.0' }
+    its('version') { should cmp >= '2022.003.20314' }
   end
   only_if { package('Adobe Acrobat Reader DC MUI').installed? }
 end
@@ -50,7 +45,7 @@ control 'win-nodejs' do
   title 'Node JS Installed'
   describe chocolatey_package('nodejs') do
     it { should be_installed }
-    its('version') { should cmp > '17.0.0' }
+    its('version') { should cmp >= '19.6.0' }
   end
   only_if { package('Node.js').installed? }
 end
@@ -60,7 +55,25 @@ control 'win-openjdk' do
   title 'OpenJDK Installed'
   describe chocolatey_package('openjdk') do
     it { should be_installed }
-    its('version') { should cmp > '18.0.0' }
+    its('version') { should cmp >= '19.0.0' }
   end
   only_if { ::Dir.exist?('C:\Program Files\OpenJDK') }
+end
+
+control 'chef-developer' do
+  impact 0.3
+  title 'Chef Development Tools'
+  describe chocolatey_package('chef_workstation') do
+    it { should be_installed }
+    its('version') { should cmp >= '23.2.1028' }
+  end
+  describe chocolatey_package('vscode') do
+    it { should be_installed }
+    its('version') { should cmp >= '1.75.1' }
+  end
+  describe chocolatey_package('git') do
+    it { should be_installed }
+    its('version') { should cmp >= '2.39.1' }
+  end
+  only_if { ::Dir.exist?('C:\Chef') }
 end
