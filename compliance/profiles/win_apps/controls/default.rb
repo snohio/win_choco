@@ -27,8 +27,7 @@ control 'win-vscode' do
     it { should be_installed }
     its('version') { should cmp >= '1.75.0' }
   end
-  only_if { package('Microsoft Visual Studio Code').installed? }
-end
+end if package('Microsoft Visual Studio Code').installed?
 
 control 'win-adobe_reader' do
   impact 0.3
@@ -37,8 +36,7 @@ control 'win-adobe_reader' do
     it { should be_installed }
     its('version') { should cmp >= '2022.003.20314' }
   end
-  only_if { package('Adobe Acrobat Reader DC MUI').installed? }
-end
+end if package('Adobe Acrobat Reader DC MUI').installed?
 
 control 'win-nodejs' do
   impact 0.3
@@ -47,8 +45,7 @@ control 'win-nodejs' do
     it { should be_installed }
     its('version') { should cmp >= '19.6.0' }
   end
-  only_if { package('Node.js').installed? }
-end
+end if package('Node.js').installed?
 
 control 'win-openjdk' do
   impact 0.3
@@ -57,13 +54,12 @@ control 'win-openjdk' do
     it { should be_installed }
     its('version') { should cmp >= '19.0.0' }
   end
-  only_if { ::Dir.exist?('C:\Program Files\OpenJDK') }
-end
+end if ::Dir.exist?('C:\Program Files\OpenJDK')
 
 control 'chef-developer' do
   impact 0.3
   title 'Chef Development Tools'
-  describe chocolatey_package('chef_workstation') do
+  describe chocolatey_package('chef-workstation') do
     it { should be_installed }
     its('version') { should cmp >= '23.2.1028' }
   end
@@ -75,5 +71,4 @@ control 'chef-developer' do
     it { should be_installed }
     its('version') { should cmp >= '2.39.1' }
   end
-  only_if { ::Dir.exist?('C:\Chef') }
-end
+end if ::Dir.exist?('C:\Chef')
