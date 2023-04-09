@@ -71,4 +71,4 @@ control 'chef-developer' do
     it { should be_installed }
     its('version') { should cmp >= '2.39.1' }
   end
-end if ::Dir.exist?('C:\Chef')
+end if ::Dir.exist?('C:\opscode\chef-workstation')

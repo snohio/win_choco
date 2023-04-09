@@ -5,6 +5,6 @@ copyright: Progress
 copyright_email: michael.butler@optum.com 
 license: Apache-2.0
 summary: Chocolatey Application Compliance Profile
-version: 0.4.1
+version: 0.4.2
 supports:
   platform: windows

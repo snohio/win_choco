@@ -2,11 +2,15 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.4.2
+
+- Fixed some Inspec checks to validate workstation installed
+
 ## 0.4.0
 
 - Created a software package for chef_developers tag.
 
-## 0.3.0
+##
 
 - Validate working with Client 18
 - No changes were needed
