@@ -10,7 +10,7 @@ This file is used to list changes made in each version of the win_choco cookbook
 
 - Created a software package for chef_developers tag.
 
-##
+## 0.3.0
 
 - Validate working with Client 18
 - No changes were needed
