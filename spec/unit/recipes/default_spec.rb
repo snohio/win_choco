@@ -11,7 +11,7 @@ describe 'win_choco::default' do
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new(platform: 'windows', version: '2019')
       runner.node.normal['tags'] = %w(chef_developer choco_openjdk)
-      runner.default['audit']['compliance_phase'] = true
+      runner.node.normal['audit']['compliance_phase'] = true
       runner.converge(described_recipe)
     end
     it 'converges successfully' do

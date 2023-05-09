@@ -1,0 +1,3 @@
+NodeNormal:
+  Description: 'Node Normal is not so bad in chefspec'
+  Enabled : false
