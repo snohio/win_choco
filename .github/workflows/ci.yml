@@ -1,0 +1,16 @@
+---
+  on:
+    pull_request:
+  
+  jobs:
+    markdownlint:
+      uses: snohio/github-workflows/.github/workflows/markdown-lint.yml@main
+  
+    yamllint:
+      uses: snohio/github-workflows/.github/workflows/yaml-lint.yml@main
+  
+    jsonlint:
+      uses: snohio/github-workflows/.github/workflows/json-lint.yml@main
+  
+    cookstylelint:
+      uses: snohio/github-workflows/.github/workflows/cookstyle-lint.yml@main

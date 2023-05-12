@@ -1,0 +1,80 @@
+---
+driver:
+  name: azurerm
+  subscription_id: <%= ENV["AZURE_SUBSCRIPTION_ID"] %>
+  location: 'East US'
+  machine_size: 'Standard_D2s_v3'
+  azure_resource_group_prefix: 'GA-WIN_CHOCO-'
+  resource_group_tags:
+   X-TTL: '2'
+
+provisioner:
+  name: chef_infra
+  always_update_cookbooks: true
+  product_name: chef
+  product_version: 18
+  channel: stable
+  max_retries: 3
+  wait_for_retry: 90
+  retry_on_exit_code: [35, 213]
+
+verifier:
+  name: inspec
+
+platforms:
+
+- name: Windows2019
+  os_type: windows
+  transport:
+    name: winrm
+    elevated: true
+  driver:
+    image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest
+
+- name: Windows2022
+  os_type: windows
+  transport:
+    name: winrm
+    elevated: true
+  driver:
+    image_urn: MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest
+
+- name: Windows-10
+  os_type: windows
+  transport:
+    name: winrm
+    elevated: true
+  driver:
+    image_urn: MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent:latest
+    winrm_powershell_script: |-
+      winrm quickconfig -q
+      Set-NetFirewallRule -Name "WINRM-HTTP-In-TCP" -RemoteAddress Any -Enabled True
+
+- name: Windows-11
+  os_type: windows
+  transport:
+    name: winrm
+    elevated: true
+  driver:
+    image_urn: MicrosoftWindowsDesktop:windows-11:win11-22h2-ent:latest
+    winrm_powershell_script: |-
+      winrm quickconfig -q
+      Set-NetFirewallRule -Name "WINRM-HTTP-In-TCP" -RemoteAddress Any -Enabled True
+
+suites:
+  - name: default
+    run_list:
+    - recipe[win_choco::default]
+    verifier:
+      inspec_tests:
+        - compliance/profiles/win_apps
+    attributes:
+      audit:
+        reporter: 'cli'
+        compliance_phase: true
+      software:
+#       adobereader: true
+#        vscode: true
+#      tags:
+#        - chef_developer
+#        - choco_openjdk
