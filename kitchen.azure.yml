@@ -72,7 +72,7 @@ suites:
       audit:
         reporter: 'cli'
         compliance_phase: true
-      software:
+#      software:
 #       adobereader: true
 #        vscode: true
 #      tags:

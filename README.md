@@ -35,9 +35,9 @@ Issues and suggestions are welcome. https://github.com/snohio/win_choco/issues
 
 ## License & Authors
 
-**Authors:** [Michael Butler](mailto:snohio@gmail.com) (@snohio)
+*Authors:* [Michael Butler](mailto:snohio@gmail.com) (@snohio)
 
-**License:** 2022, Apache 2 - by Snohio
+*License:* 2022, Apache 2 - by Snohio
 
 ## Thanks for Watching
 
