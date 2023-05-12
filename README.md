@@ -2,7 +2,7 @@
 
 ## About This Cookbook
 
-This cookbook was put together to test installing Chocolatey on Windows systems. It utilizes the Chocolatey install cookbook from the Chef Supermarket. This was also created to show examples of multiple ways to guard application installation using attributes,  
+This cookbook was put together to test installing Chocolatey on Windows systems. It utilizes the Chocolatey install cookbook from the Chef Supermarket. This was also created to show examples of multiple ways to guard application installation using attributes.
 
 ## Kitchen Testing
 
@@ -31,13 +31,13 @@ The following cookbooks are required to include this cookbook.
 
 ## Issues
 
-Issues and suggestions are welcome. https://github.com/snohio/win_choco/issues
+Issues and suggestions are welcome. [Win Choco on Github](https://github.com/snohio/win_choco/issues)
 
 ## License & Authors
 
-**Authors:** [Michael Butler](mailto:snohio@gmail.com) (@snohio)
+*Authors:* [Michael Butler](mailto:snohio@gmail.com) (@snohio)
 
-**License:** 2022, Apache 2 - by Snohio
+*License:* 2022, Apache 2 - by Snohio
 
 ## Thanks for Watching
 
