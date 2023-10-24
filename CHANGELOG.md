@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.5.0
+
+* Updating and Testing with Chocolatey 2.0
+* Removed Edge and added Chrome support (Edge is pretty much defacto standard)
+* Updated Inspec tests with new versions
+
 ## 0.4.3
 
 * Adding ci.yml and git actions to perform cookstyle and kitchen tests
