@@ -4,7 +4,7 @@ driver:
   subscription_id: <%= ENV["AZURE_SUBSCRIPTION_ID"] %>
   location: 'East US'
   machine_size: 'Standard_D2s_v3'
-  azure_resource_group_prefix: 'GA-WIN_CHOCO-'
+  azure_resource_group_prefix: 'ga-win_choco-'
   resource_group_tags:
    X-TTL: '2'
 
@@ -72,9 +72,9 @@ suites:
       audit:
         reporter: 'cli'
         compliance_phase: true
-#      software:
+      software:
 #       adobereader: true
-#        vscode: true
-#      tags:
+      tags:
+        - chrome
 #        - chef_developer
 #        - choco_openjdk

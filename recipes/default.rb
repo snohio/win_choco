@@ -2,7 +2,7 @@
 # Cookbook:: win_choco
 # Recipe:: default
 #
-# Copyright:: 2021, Progress
+# Copyright:: 2023, Progress
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,12 +19,22 @@
 include_profile 'win_choco::win_apps'
 
 include_recipe 'chocolatey::default'
+
 chocolatey_package '7zip.install' do
   action :install
 end
 
+if tagged?('chrome')
+  chocolatey_package 'GoogleChrome' do
+    action :install
+  end
+end
+
+## Only install Microsoft Edge with Choco if it is not already a part of the OS install
+
 chocolatey_package 'microsoft-edge' do
   action :install
+  not_if { node['packages']['Microsoft Edge'] }
 end
 
 # This is the Chef Developer Package
@@ -42,7 +52,9 @@ if tagged?('chef_developer')
   end
 end
 
-# Install Adobe Acrobat Reader if the Attribute [software][adobereader] exists. This can exist in a policyfile, role, or node level.
+# Install Adobe Acrobat Reader if the Attribute [software][adobereader] exists.
+# This can exist in a policyfile, role, or node level.
+
 if node.exist?('software', 'adobereader')
   chocolatey_package 'adobereader' do
     action :install
