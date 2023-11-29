@@ -71,9 +71,9 @@ suites:
       audit:
         reporter: 'cli'
         compliance_phase: true
-      software:
+#      software:
 #       adobereader: true
-      tags:
-        - chrome
+#      tags:
+#        - chrome
 #        - chef_developer
 #        - choco_openjdk
