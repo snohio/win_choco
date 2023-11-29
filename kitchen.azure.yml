@@ -5,8 +5,7 @@ driver:
   location: 'East US'
   machine_size: 'Standard_D2s_v3'
   azure_resource_group_prefix: 'ga-win_choco-'
-  resource_group_tags:
-   X-TTL: '2'
+  resource_group_tags: <%= ENV["AZURE_TAGS"] %>
 
 provisioner:
   name: chef_infra
