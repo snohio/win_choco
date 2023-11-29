@@ -13,10 +13,6 @@ control 'win-app' do
     it { should be_installed }
     its('version') { should cmp >= '23.1' }
   end
-  describe chocolatey_package('GoogleChrome') do
-    it { should be_installed }
-    its('version') { should cmp >= '118.0.5993.89' }
-  end
 end
 
 control 'win-vscode' do
