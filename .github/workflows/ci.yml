@@ -17,7 +17,6 @@
   
     integration-azure:
       runs-on: ubuntu-latest
-      continue-on-error: true
       needs:
         - markdownlint
         - yamllint
@@ -59,6 +58,7 @@
             AZURE_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
             AZURE_TAGS: ${{ vars.AZURE_TAGS }}
         - name: Test-Kitchen Converge Again
+          if: always()
           uses: actionshub/test-kitchen@main
           with:
             suite: ${{ matrix.suite }}
