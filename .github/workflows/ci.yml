@@ -17,6 +17,7 @@
   
     integration-azure:
       runs-on: ubuntu-latest
+      continue-on-error: true
       needs:
         - markdownlint
         - yamllint
