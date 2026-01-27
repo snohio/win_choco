@@ -25,7 +25,6 @@
       strategy:
         matrix:
           os:
-            - Windows2019
             - Windows2022
             - Windows2025
             - Windows-10
