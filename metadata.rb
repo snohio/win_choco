@@ -5,4 +5,4 @@ license 'Apache-2.0'
 description 'Installs/Configures win_choco'
 version '0.5.0'
 chef_version '>= 17.0'
-depends 'chocolatey'
+

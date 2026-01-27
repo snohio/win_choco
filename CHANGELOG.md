@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.6.0
+
+* Move to the native chocolatey_install resource and remove the community chocolatey cookbook dependency
+
 ## 0.5.1
 
 * Chrome is now installed by tag and the version check removed.

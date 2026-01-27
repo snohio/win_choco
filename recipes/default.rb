@@ -18,7 +18,9 @@
 
 include_profile 'win_choco::win_apps'
 
-include_recipe 'chocolatey::default'
+chocolatey_installer 'latest' do
+  action :install
+end
 
 chocolatey_package '7zip.install' do
   action :install
