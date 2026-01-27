@@ -27,6 +27,7 @@
           os:
             - Windows2019
             - Windows2022
+            - Windows2025
             - Windows-10
             - Windows-11
           suite:
@@ -101,9 +102,9 @@
       runs-on: ubuntu-latest
       steps:
         - name: Decide whether the needed jobs succeeded or failed
-          uses: re-actors/alls-green@main
+          uses: re-actors/alls-green@release/v1
           with:
-            allowed-failures: 
-            allowed-skips: 
+            allowed-failures: ""
+            allowed-skips: ""
             jobs: ${{ toJSON(needs) }}
   
