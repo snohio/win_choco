@@ -68,7 +68,7 @@ platforms:
     name: winrm
     elevated: true
   driver:
-    image_urn: MicrosoftWindowsDesktop:Windows-10:win10-25h2-ent:latest
+    image_urn: MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent:latest
     winrm_powershell_script: |-
       Set-MpPreference -DisableRealtimeMonitoring $true
       winrm quickconfig -q
