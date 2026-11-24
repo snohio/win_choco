@@ -1,20 +1,6 @@
 #
 # Cookbook:: win_choco
 # Recipe:: default
-#
-# Copyright:: 2023, Progress
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
 include_profile 'win_choco::win_apps'
 
@@ -22,20 +8,23 @@ chocolatey_installer 'latest' do
   action :install
 end
 
-chocolatey_package '7zip.install' do
+win_choco_package '7zip.install' do
   action :install
+  update true
 end
 
 if tagged?('chrome')
-  chocolatey_package 'GoogleChrome' do
+  win_choco_package 'GoogleChrome' do
     action :install
+    update true
   end
 end
 
 ## Only install Microsoft Edge with Choco if it is not already a part of the OS install
 
-chocolatey_package 'microsoft-edge' do
+win_choco_package 'microsoft-edge' do
   action :install
+  update true
   not_if { node['packages']['Microsoft Edge'] }
 end
 
@@ -43,14 +32,17 @@ end
 # If this is a Chef Developer's workstation, please include the tag chef_developer
 
 if tagged?('chef_developer')
-  chocolatey_package 'chef-workstation' do
+  win_choco_package 'chef-workstation' do
     action :install
+    update true
   end
-  chocolatey_package 'vscode' do
+  win_choco_package 'vscode' do
     action :install
+    update true
   end
-  chocolatey_package 'git' do
+  win_choco_package 'git' do
     action :install
+    update true
   end
 end
 
@@ -58,8 +50,9 @@ end
 # This can exist in a policyfile, role, or node level.
 
 if node.exist?('software', 'adobereader')
-  chocolatey_package 'adobereader' do
+  win_choco_package 'adobereader' do
     action :install
+    update true
   end
 # Remove it if it doesn't exist.
 elsif node.exist?('packages', 'Adobe Acrobat Reader DC MUI')
@@ -72,8 +65,13 @@ end
 # have a .install piece too, so you need to remove both as below.
 
 if tagged?('choco_nodejs')
-  chocolatey_package 'nodejs' do
+  win_choco_package 'nodejs' do
     action :install
+    update true
+  end
+  win_choco_package 'nodejs.install' do
+    action :install
+    update true
   end
 elsif node.exist?('packages', 'Node.js')
   chocolatey_package 'nodejs' do
@@ -85,8 +83,9 @@ elsif node.exist?('packages', 'Node.js')
 end
 
 if tagged?('choco_openjdk')
-  chocolatey_package 'openjdk' do
+  win_choco_package 'openjdk' do
     action :install
+    update true
   end
 elsif node.exist?('packages', 'openjdk')
   chocolatey_package 'openjdk' do

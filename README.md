@@ -2,7 +2,24 @@
 
 ## About This Cookbook
 
-This cookbook was put together to test installing Chocolatey on Windows systems. It utilizes the Chocolatey install cookbook from the Chef Supermarket. This was also created to show examples of multiple ways to guard application installation using attributes.
+This cookbook installs Chocolatey and packages on Windows using Chef's built-in Chocolatey resources. It also shows examples of guarding application installation using attributes.
+
+## Package resource
+
+`win_choco_package` checks Chocolatey's local package list before installing.
+By default, an installed package is left unchanged. Set `update true` to
+check for newer versions and upgrade an outdated, unpinned package:
+
+```ruby
+win_choco_package '7zip.install' do
+  update true
+end
+```
+
+The package name must be the Chocolatey package ID, not the Windows display
+name. Updates use Chocolatey's configured sources and respect package pins.
+The default recipe leaves updates disabled and retains its existing removal
+and Microsoft Edge guards.
 
 ## Kitchen Testing
 
@@ -22,12 +39,6 @@ Notice the Attributes section in the `kitchen.yml` file as well. There are examp
 ### Chef
 
 * Chef server 17+
-
-### Dependent Cookbooks
-
-The following cookbooks are required to include this cookbook.
-
-* Chocolatey
 
 ## Issues
 

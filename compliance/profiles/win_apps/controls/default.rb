@@ -1,4 +1,4 @@
-# copyright: 2023, Mike Butler
+# copyright: 2027, Mike Butler
 
 control 'win-app' do
   impact 0.7

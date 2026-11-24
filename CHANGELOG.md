@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of the win_choco cookbook.
 
+## 0.7.0
+
+* Add the `win_choco_package` resource to install missing packages and optionally upgrade outdated, unpinned packages.
+* Use the new resource in the default recipe, with updates disabled by default.
+* Add ChefSpec tests for package installation and update behavior.
+
 ## 0.6.0
 
 * Move to the native chocolatey_install resource and remove the community chocolatey cookbook dependency
